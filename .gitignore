@@ -1,0 +1,76 @@
+# Maven / Java
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Compiled class files
+*.class
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# IDEs
+.idea/
+*.iml
+*.iws
+out/
+.vscode/
+*.ipr
+*.iws
+*.iml
+/.classpath
+/.project
+/.settings/
+
+# Maven local repository (optional — commonly ignored)
+.m2/
+
+# Spring Boot
+spring-boot-app.jar
+spring-boot-app.war
+
+# Test / coverage
+target/surefire-reports/
+target/failsafe-reports/
+jacoco.exec
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.temp
+tmp/
+*.swp
+
+# Keystore, secrets, and credentials
+*.jks
+*.keystore
+*.p12
+
+# Environment files (include .env and any .env.*)
+.env
+.env.*
+.envrc
+
+# Other common artifacts
+*.zip
+*.tar.gz
+*.rar
+*.bak
+*.orig
+
+scrapbook.txt
+src/main/resources/hoursheets/*.pdf
+# End of file
+
