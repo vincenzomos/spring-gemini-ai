@@ -50,7 +50,8 @@ public class ChatController {
 
         ToolCallback[] toolCallbacks = getAllTools();
 
-        this.chatClient = chatClientBuilder.defaultSystem("""
+        this.chatClient = chatClientBuilder
+                .defaultSystem("""
                 You are a versatile AI assistant.
                 - For questions about timesheets, projects or PDF documents, use the available tools.
                 - For all other general questions, use your own knowledge as the language model.
