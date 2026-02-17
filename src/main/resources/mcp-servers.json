@@ -8,6 +8,14 @@
         "-y",
         "@playwright/mcp@latest"
       ]
+    },
+    "spotify": {
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "node",
+        "C:\\Users\\vmos\\gitrepos\\AI-playground\\spotify-mcp-server\\build\\index.js"
+      ]
     }
   }
 }

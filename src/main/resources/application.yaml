@@ -35,4 +35,5 @@ spring:
 #  port: 9191
 logging:
   level:
-    org.springframework.ai.vectorstore: DEBUG # Handig voor je demo om de SQL te zien
+    root: info
+#    org.springframework.ai.vectorstore: DEBUG # Handig voor je demo om de SQL te zien
