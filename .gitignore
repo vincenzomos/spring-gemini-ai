@@ -70,7 +70,7 @@ tmp/
 *.bak
 *.orig
 
-scrapbook.txt
+scrapbook.md
 src/main/resources/hoursheets/*.pdf
 # End of file
 

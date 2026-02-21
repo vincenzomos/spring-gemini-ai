@@ -122,7 +122,7 @@ public class ChatController {
                         1. **Always Fetch IDs:** When searching for tracks, albums, or artists, always keep track of the 'id' or 'uri' returned by the tool. Do not just display the names to the user; maintain a mapping of the name to its ID in your internal context.
                         2. **Seamless Playback:** If a user asks to play a song you just found (e.g., "Play the first one" or "Play World In My Eyes"), use the ID/URI from your previous tool output immediately. Do not ask the user for the ID.
                         3. **Implicit Search:** If a user asks to play a specific song that hasn't been searched for yet, perform a `searchSpotify` first to get the ID, then call `playMusic` automatically without asking for permission in between.
-                        4. **Context Maintenance:** You are responsible for knowing which device is active. If `playMusic` fails due to "no active device", use `getMyDevices` (if available) or ask the user to open Spotify on a device.
+                        4. **Context Maintenance:** You are responsible for knowing which device is active. If `playMusic` fails due to "no active device", ask the user to open Spotify on a device.
                         
                         ## Response Style
                         - Professional, concise, and data-driven.

@@ -1,0 +1,47 @@
+The previous diagram used Mermaid.js syntax (common in GitHub and Notion). PlantUML is slightly different—it’s the industry standard for Java developers (especially those with Berend's level of experience!) because it integrates so well with IDEs like IntelliJ and Eclipse.
+
+Here is the PlantUML version of that sequence. You can paste this into any PlantUML renderer or IDE plugin.
+
+Codefragment
+@startuml
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+participant "User" as U
+participant "MCP Host\n(e.g., Cursor/IDE)" as Host
+box "The Orchestrator" #f8f9fa
+    participant "MCP Client" as Client
+end box
+box "External Capabilities" #e3f2fd
+    participant "MCP Server\n(e.g., GitHub/Postgres)" as Server
+end box
+participant "LLM\n(e.g., Claude 3.5)" as LLM
+
+== Initialization Phase ==
+
+Host -> Client : Start MCP Session
+Client -> Server : JSON-RPC: initialize()
+Server --> Client : Capabilities & Tool Definitions list_tools()
+Client -> Host : Tools Registered
+
+== Execution Loop (The "Action") ==
+
+U -> Host : "Check GitHub for open PRs"
+Host -> Client : Process User Intent
+Client -> LLM : Prompt + Tool Schemas (JSON)
+Note right of LLM : LLM recognizes intent matches\n'get_pull_requests' tool
+
+LLM --> Client : call_tool("get_pull_requests", {repo: "..."})
+
+Client -> Server : tools/call("get_pull_requests")
+Note right of Server : Server executes logic\n(API call to GitHub)
+Server --> Client : tool_result (JSON Data)
+
+Client -> LLM : context_update(Tool Result)
+Note right of LLM : LLM synthesizes data\ninto natural language
+
+LLM --> Client : "I found 3 open PRs..."
+Client -> Host : Final Text Response
+Host -> U : Display Result to User
+
+@enduml

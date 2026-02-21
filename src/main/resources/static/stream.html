@@ -120,7 +120,10 @@
                 // Close connection when server signals done
                 try { eventSource.close(); } catch (err) {}
                 eventSource = null;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+                // Final scroll to ensure we're at the bottom
+                requestAnimationFrame(() => {
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                });
                 return;
             }
             // Prefix with space if needed (for word boundaries)
@@ -141,7 +144,10 @@
             // Parse and render markdown as HTML
             contentElement.innerHTML = marked.parse(markdownBuffer);
 
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            // Ensure scroll happens after rendering
+            requestAnimationFrame(() => {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
         };
 
         eventSource.onerror = function (err) {
@@ -165,7 +171,12 @@
         <div class="message-content">${renderedContent}</div>
     `;
         chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Ensure scroll happens after DOM update
+        requestAnimationFrame(() => {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
         return messageElement;
     }
 </script>
